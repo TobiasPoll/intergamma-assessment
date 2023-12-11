@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intergamma-demo
+  labels:
+    app: intergamma-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: intergamma-demo
+  template:
+    metadata:
+      name: intergamma-demo
+      labels:
+        app: intergamma-demo
+    spec:
+      containers:
+        - name: intergamma-demo
+          image: intergamma-demo:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: intergamma-demo-configmap
+
+
+
+      

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: intergamma
+management:
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: diskSpace
+  endpoints:
+    web:
+      exposure:
+        include: "env,health,info,prometheus"
+server:
+  error:
+    include-exception: true
+    include-stacktrace: always
+logging:
+  level:
+    root: info

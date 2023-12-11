@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="2" author="tpoll">
+        <loadData file="db/changelog/csv/shops.csv"
+                  tableName="shop"
+                  encoding="UTF-8">
+            <column header="id"
+                    name="id"
+                    type="varchar(40)"/>
+            <column header="name"
+                    name="name"
+                    type="text"/>
+            <column header="address"
+                    name="address"
+                    type="text"/>
+        </loadData>
+
+        <loadData file="db/changelog/csv/products.csv"
+                  tableName="product"
+                  encoding="UTF-8">
+            <column header="id"
+                    name="id"
+                    type="varchar(40)"/>
+            <column header="name"
+                    name="name"
+                    type="text"/>
+            <column header="description"
+                    name="description"
+                    type="text"/>
+            <column header="price"
+                    name="price"
+                    type="currency"/>
+        </loadData>
+
+        <loadData file="db/changelog/csv/items.csv"
+                  tableName="item"
+                  encoding="UTF-8">
+            <column header="id"
+                    name="id"
+                    type="varchar(40)"/>
+            <column header="shop_id"
+                    name="shop_id"
+                    type="varchar(40)"/>
+            <column header="product_id"
+                    name="product_id"
+                    type="varchar(40)"/>
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

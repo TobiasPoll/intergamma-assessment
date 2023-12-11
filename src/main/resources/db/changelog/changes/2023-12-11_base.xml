@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="tpoll">
+        <createTable tableName="product">
+            <column name="id" type="varchar(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_product"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="text"/>
+            <column name="price" type="currency">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="shop">
+            <column name="id" type="varchar(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_shop"/>
+            </column>
+            <column name="name" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="text"/>
+        </createTable>
+
+        <createTable tableName="item">
+            <column name="id" type="varchar(40)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_product_item"/>
+            </column>
+            <column name="product_id" type="varchar(40)">
+                <constraints nullable="false" foreignKeyName="fk_item_product" referencedTableName="product"/>
+            </column>
+            <column name="shop_id" type="varchar(40)">
+                <constraints nullable="false" foreignKeyName="fk_item_shop" referencedTableName="shop"/>
+            </column>
+            <column name="reserved_at" type="timestamp"/>
+        </createTable>
+
+    </changeSet>
+
+
+</databaseChangeLog>

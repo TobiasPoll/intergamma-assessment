@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: intergamma-demo-configmap
+  labels:
+    app: intergamma-demo

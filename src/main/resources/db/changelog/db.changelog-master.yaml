@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changes/2023-12-11_base.xml
+  - include:
+      file: db/changelog/changes/2023-12-11_load-data.xml
